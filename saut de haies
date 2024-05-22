@@ -1,0 +1,64 @@
+import pyxel
+pyxel.init(256,256,title="Nuit du Code")
+global x
+global y
+global val_saut
+y=128
+val_saut=0
+x=0
+def update():
+    global x
+    global y
+    global val_saut
+
+    if val_saut==0:    
+        if pyxel.btn(pyxel.KEY_S):
+            x=x+2
+        if pyxel.btnr(pyxel.KEY_SPACE):
+            val_saut=x 
+    elif val_saut>0:
+        if x-val_saut<24:
+            x+=2
+            y-=1
+        elif x-val_saut>=24 and x-val_saut<36:
+            x+=2
+        elif x-val_saut>=36 and x-val_saut<60:
+            x+=2
+            y+=1
+            
+
+
+    #if pyxel.btn(pyxel.KEY_S):
+     #   x+=1
+      #  if pyxel.btn(pyxel.KEY_SPACE):
+       #     y-=10
+        #    if y>=118:
+         #       x+=10
+        
+          #      y+=10
+            
+
+
+def draw():
+    global x
+    global y
+    global val_saut
+    pyxel.cls(5)
+    pyxel.rect(x,y,10,30,15) #background
+    pyxel.rect(0,159,256,159,11) #man
+    pyxel.line(0,158,256,158,0) #sol
+
+    pyxel.elli(50,60,62,15,7) #nuage
+    pyxel.elli(150,30,62,15,7) #nuage
+    pyxel.circ(240,15,10,10) #soleil
+    pyxel.rect(65,148,1,10,8)
+    pyxel.rect(155,148,1,10,8)
+    pyxel.rect(245,148,1,10,8)
+    
+    
+    pyxel.rect(x,y-3,10,5,8) #casquette
+    pyxel.rect(x,y,15,3,8) #casquette
+    pyxel.circ(x+2,y+7,1,0) #oeil gauche
+    pyxel.circ(x+7,y+7,1,0) #oeil droit
+    pyxel.ellib(x+5,y+12,2,2,8)#bouche
+pyxel.run(update,draw)
