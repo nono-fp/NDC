@@ -11,10 +11,12 @@ def update():
     global x
     global y
     global score
-    global val_saut  
-    if val_saut==0:    
+    global val_saut
+    if val_saut==0:
         if pyxel.btn(pyxel.KEY_RETURN):
             x=x+3
+            if x>230:
+                x=230
         if pyxel.btnr(pyxel.KEY_SPACE):
             val_saut=x 
     elif val_saut>0:
@@ -38,15 +40,23 @@ def draw():
     pyxel.cls(5)
     pyxel.rect(x,y,10,30,15) #background
     pyxel.rect(0,159,256,159,11) #man
+    pyxel.rect(x,y-3,10,5,8) #casquette
+    pyxel.rect(x,y,15,3,8) #casquette
+    pyxel.circ(x+2,y+7,1,0) #oeil gauche
+    pyxel.circ(x+7,y+7,1,0) #oeil droit
+    pyxel.ellib(x+5,y+12,2,2,8)#bouche
     pyxel.line(0,158,256,158,0) #sol
     pyxel.rect(170,157,2,15,8) #marque
     pyxel.elli(50,60,62,15,7) #nuage
     pyxel.elli(150,30,62,15,7) #nuage
     pyxel.circ(240,15,10,10) #soleil
-    if val_saut>=170:
+    if x>=230 and val_saut==0:
+        pyxel.text(10,10,'vous avez oublie de sauter',8)
+    if val_saut>=160:
         pyxel.text(10,10,'MORDU',8)
-    elif x>val_saut+60 and val_saut>0:
-       score=str(val_saut+60-170)
+    elif x>=val_saut+60 and val_saut>0:
+       score=str((val_saut+60-170)/5)+'m'
+       pyxel.text(10,25,'Le score maximal est 9.8m',8)
        pyxel.text(10,10,score,8)
 
 pyxel.run(update,draw)
