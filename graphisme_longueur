@@ -1,6 +1,11 @@
 def draw():
     pyxel.cls(5)
     pyxel.rect(10,128,10,30,15) #man
+    pyxel.rect(10,125,10,5,8) #casquette
+    pyxel.rect(10,128,15,3,8) #casquette
+    pyxel.circ(12,135,1,0) #oeil gauche
+    pyxel.circ(17,135,1,0) #oeil droit
+    pyxel.ellib(15,140,2,2,8)#bouche
     pyxel.rect(0,159,256,159,11) #background
     pyxel.line(0,158,256,158,0) #sol
     pyxel.rect(150,157,2,15,8) #marque
