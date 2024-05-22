@@ -1,0 +1,29 @@
+import pyxel
+pyxel.init(256,256,title="Nuit du Code")
+
+def update():
+    if pyxel.btnp(pyxel.KEY_RETURN):
+        pyxel.quit()
+
+def draw():
+    pyxel.mouse(visible=True)
+    pyxel.cls(7)
+    pyxel.rect(65,20,52,10,0) #haut J
+    pyxel.rect(85,20,10,50,0) #milieu 
+    pyxel.rect(65,60,20,10,0) #bas J
+    pyxel.rect(135,20,40,10,0) #haut du O
+    pyxel.rect(135,20,10,40,0) #milieu gauche du O
+    pyxel.rect(135,60,40,10,0) #bas du O
+    pyxel.rect(165,20,10,40,0) #milieu droit du O
+    pyxel.circb(95,115,25,5) #cercle bleu
+    pyxel.circb(130,115,25,0) #cercle noir
+    pyxel.circb(165,115,25,8) #cercle rouge
+    pyxel.circb(110,150,25,10) #cercle jaune
+    pyxel.circb(145,150,25,11) #cercle vert
+    pyxel.rect(98,200,60,15,9) #bouton saut en longueur
+    pyxel.text(98,200,'     saut \n  en longueur',7) #text bouton saut en longueur
+    pyxel.rect(98,220,60,15,9) #bouton saut de haies
+    pyxel.text(98,220,'     saut \n   de haies',7) #text bouton sautde haies
+    pyxel.text(15,210,'Choisissez \nle jeu auquel \nvous voulez jouer',9)
+    
+pyxel.run(update,draw)
